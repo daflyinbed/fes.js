@@ -51,7 +51,7 @@ export default (api: IPluginAPI) => {
 
         const iconNames = getIconNamesFromMenu(userConfig.menus);
 
-        const iconsString = iconNames.map(iconName => `import { ${iconName} } from '@fesjs/fes-design/icon'`);
+        const iconsString = iconNames.map(iconName => `import { ${iconName} } from './client'`);
         api.writeTmpFile({
             path: join(namespace, 'icons.js'),
             content: `
@@ -82,6 +82,16 @@ export default (api: IPluginAPI) => {
             content: Mustache.render(readFileSync(join(__dirname, 'runtime/runtime.js.tpl'), 'utf-8'), {
                 HAS_PLUGIN_ACCESS,
             }),
+        });
+
+        api.writeTmpFile({
+            path: join(namespace, 'client.js'),
+            content: `export * from ${JSON.stringify(winPath(join(__dirname, 'client.mjs')))};`,
+        });
+
+        api.writeTmpFile({
+            path: join(namespace, 'helpers/svg.js'),
+            content: `export { isValid, validateContent } from '../client';`,
         });
 
         api.copyTmpFiles({

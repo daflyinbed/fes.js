@@ -28,8 +28,7 @@
 
 <script>
 import { computed, provide, reactive, ref, unref } from 'vue';
-import { FDropdown, FTabPane, FTabs } from '@fesjs/fes-design';
-import { MoreOutlined, ReloadOutlined } from '@fesjs/fes-design/icon';
+import { FDropdown, FTabPane, FTabs, MoreOutlined, ReloadOutlined } from '../client';
 import { plugin, useRoute, useRouter } from '@@/core/coreExports';
 import { transTitle } from '../helpers/pluginLocale';
 import { PLUGIN_LAYOUT_KEY, PLUGIN_LAYOUT_TITLE_KEY } from '../useLayout';

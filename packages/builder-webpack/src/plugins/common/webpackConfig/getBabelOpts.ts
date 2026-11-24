@@ -1,7 +1,7 @@
 import type { WebpackBuildConfig } from '../../../shared';
 import process from 'node:process';
 import { winPath } from '@fesjs/utils';
-import { esmRequire, esmResolve } from '../../../shared';
+import { esmRequire, esmResolve, OWNER_DIR } from '../../../shared';
 
 interface PresetOpts {
     transformRuntime: Record<string, any>;
@@ -40,6 +40,9 @@ function getBabelOpts({ cwd, targets, config, presetOpts }: GetBabelOptsOptions)
         ],
         ...(config.extraBabelPresets || []),
     ];
+    const transformRuntime = presetOpts.transformRuntime ?? {};
+    const { corejs, moduleName } = transformRuntime;
+    const useCustomRuntime = corejs || (moduleName && moduleName !== '@babel/runtime');
     const plugins: any[] = [
         esmRequire('@babel/plugin-proposal-export-default-from').default,
         [
@@ -54,7 +57,9 @@ function getBabelOpts({ cwd, targets, config, presetOpts }: GetBabelOptsOptions)
             esmResolve('@babel/plugin-transform-runtime'),
             {
                 useESModules: true,
-                ...presetOpts.transformRuntime,
+                // Use the builder's runtime for the standard helpers and preserve app resolution for custom runtimes.
+                absoluteRuntime: useCustomRuntime ? false : OWNER_DIR,
+                ...transformRuntime,
             },
         ],
         esmResolve('@vue/babel-plugin-jsx'),

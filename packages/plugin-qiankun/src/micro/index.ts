@@ -5,8 +5,8 @@ import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { isEqual } from 'es-toolkit/compat';
 
-import qiankunPlugin from '../vite-plugin';
 import { qiankunStateFromMainModelNamespace } from '../constants';
+import qiankunPlugin from '../vite-plugin';
 
 const namespace = 'plugin-qiankun/micro';
 
@@ -19,7 +19,7 @@ export function isSlaveEnable(api) {
 
 export default function (api) {
     const {
-        utils: { Mustache },
+        utils: { Mustache, winPath },
     } = api;
 
     api.describe({
@@ -116,7 +116,9 @@ export const renderWithQiankun = (qiankunLifeCycle) => {
         if (HAS_PLUGIN_MODEL) {
             api.writeTmpFile({
                 path: absModelPath,
-                content: readFileSync(join(__dirname, 'runtime/qiankunModel.tpl'), 'utf-8'),
+                content: Mustache.render(readFileSync(join(__dirname, 'runtime/qiankunModel.tpl'), 'utf-8'), {
+                    clientPath: JSON.stringify(winPath(join(__dirname, '../client.mjs'))),
+                }),
             });
         }
     });

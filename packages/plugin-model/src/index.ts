@@ -60,6 +60,7 @@ export default (api: IPluginAPI) => {
             path: absCoreFilePath,
             content: Mustache.render(readFileSync(join(__dirname, 'runtime/core.tpl'), 'utf-8'), {
                 ...tmpFiles,
+                clientPath: JSON.stringify(winPath(join(__dirname, 'client.mjs'))),
             }),
         });
 

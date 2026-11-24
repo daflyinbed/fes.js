@@ -40,6 +40,7 @@ export default (api: IPluginAPI) => {
             content: Mustache.render(readFileSync(join(__dirname, 'runtime/core.tpl'), 'utf-8'), {
                 IMPORT_PLUGINS: store.importPlugins.join('\n'),
                 PLUGINS: store.plugins,
+                clientPath: JSON.stringify(winPath(join(__dirname, 'client.mjs'))),
             }),
         });
 

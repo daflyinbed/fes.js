@@ -227,7 +227,7 @@
 
 <script>
 import { useRoute, useRouter } from '@@/core/coreExports';
-import { FAside, FFooter, FHeader, FLayout, FMain } from '@fesjs/fes-design';
+import { FAside, FFooter, FHeader, FLayout, FMain } from '../client';
 import { computed, nextTick, ref, watch } from 'vue';
 import defaultLogo from '../assets/logo.png';
 import { flatNodes } from '../helpers/utils';

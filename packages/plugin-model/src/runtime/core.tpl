@@ -1,5 +1,5 @@
 
-import { createSharedComposable } from '@vueuse/core';
+import { createSharedComposable } from {{{ clientPath }}};
 
 {{{userImports}}}
 {{{extraImports}}}

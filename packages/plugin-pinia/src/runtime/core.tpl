@@ -1,4 +1,4 @@
-import { createPinia } from 'pinia'
+import { createPinia } from {{{ clientPath }}}
 {{{IMPORT_PLUGINS}}};
 
 const pinia = createPinia();

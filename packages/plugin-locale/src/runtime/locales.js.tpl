@@ -1,4 +1,4 @@
-import { merge } from 'es-toolkit/compat'
+import { merge } from './client'
 {{#REPLACE_IMPORTS}}
 import {{importName}} from "{{{path}}}";
 {{/REPLACE_IMPORTS}}

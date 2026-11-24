@@ -1,5 +1,5 @@
 import { ApplyPluginsType, plugin } from '@fesjs/fes';
-import { createRequest } from '@qlin/request';
+import { createRequest } from {{{ clientPath }}};
 
 import { ref, shallowRef } from 'vue';
 

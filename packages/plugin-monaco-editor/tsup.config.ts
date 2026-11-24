@@ -2,7 +2,7 @@ import { copySync } from 'fs-extra/esm';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-    entry: ['src/index.ts'],
+    entry: ['src/index.ts', 'src/client.js'],
     splitting: false,
     sourcemap: false,
     clean: true,

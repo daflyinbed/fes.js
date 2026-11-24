@@ -4,6 +4,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
     entry: [
         'src/index.ts',
+        'src/client.js',
         'src/main/index.ts',
         'src/micro/index.ts',
         'src/vite-plugin/index.ts',

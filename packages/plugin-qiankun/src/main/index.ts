@@ -39,14 +39,14 @@ export default function (api) {
     const absQiankunPath = join(namespace, 'qiankun.js');
 
     api.onGenerateFiles(() => {
+        const clientPath = JSON.stringify(winPath(join(__dirname, '../client.mjs')));
         const HAS_PLUGIN_MODEL = api.hasPlugins(['@fesjs/plugin-model']);
         api.writeTmpFile({
             path: absMicroAppPath,
             content: Mustache.render(readFileSync(join(__dirname, 'runtime/MicroApp.tpl'), 'utf-8'), {
                 qiankunStateForMicroModelNamespace,
                 HAS_PLUGIN_MODEL: HAS_PLUGIN_MODEL && existsSync(winPath(join(api.paths.absSrcPath, 'models/qiankunStateForMicro.js'))),
-                QIANKUN: 'qiankun',
-                LODASH_ES: 'es-toolkit/compat',
+                clientPath,
             }),
         });
 
@@ -63,7 +63,7 @@ export default function (api) {
 
         api.writeTmpFile({
             path: absQiankunPath,
-            content: `export { initGlobalState } from 'qiankun';`,
+            content: `export { initGlobalState } from ${clientPath};`,
         });
 
         const { main: options } = api.config?.qiankun || {};

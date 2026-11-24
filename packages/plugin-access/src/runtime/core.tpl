@@ -1,5 +1,5 @@
 import { computed, reactive, unref } from "vue";
-import { isPlainObject } from "{{{ lodashPath }}}";
+import { isPlainObject } from {{{ clientPath }}};
 import createComponent from "./createComponent";
 import createDirective from "./createDirective";
 

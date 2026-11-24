@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 
 export default (api: IPluginAPI) => {
     const {
-        utils: { Mustache },
+        utils: { Mustache, winPath },
     } = api;
 
     api.describe({
@@ -85,8 +85,12 @@ export default (api: IPluginAPI) => {
             content: Mustache.render(readFileSync(join(__dirname, 'runtime/core.js.tpl'), 'utf-8'), {
                 REPLACE_DEFAULT_OPTIONS: JSON.stringify(otherConfig, null, 2),
                 BASE_NAVIGATOR: baseNavigator,
-                VUE_I18N_PATH: 'vue-i18n',
             }),
+        });
+
+        api.writeTmpFile({
+            path: join(namespace, 'client.js'),
+            content: `export * from ${JSON.stringify(winPath(join(__dirname, 'client.mjs')))};`,
         });
 
         api.copyTmpFiles({

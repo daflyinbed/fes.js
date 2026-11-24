@@ -1,5 +1,6 @@
 import type { IPluginAPI } from '@fesjs/shared';
 
+import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pkg from '../package.json' assert { type: 'json' };
@@ -13,15 +14,13 @@ export default (api: IPluginAPI) => {
     const namespace = 'plugin-request';
     const absoluteFilePath = `${namespace}/request.js`;
 
-    let generatedOnce = false;
+    const { Mustache, winPath } = api.utils;
     api.onGenerateFiles(() => {
-        if (generatedOnce) {
-            return;
-        }
-        generatedOnce = true;
-        api.copyTmpFiles({
-            namespace,
-            path: join(__dirname, 'template'),
+        api.writeTmpFile({
+            path: absoluteFilePath,
+            content: Mustache.render(readFileSync(join(__dirname, 'template/request.js.tpl'), 'utf-8'), {
+                clientPath: JSON.stringify(winPath(join(__dirname, 'client.mjs'))),
+            }),
         });
     });
 

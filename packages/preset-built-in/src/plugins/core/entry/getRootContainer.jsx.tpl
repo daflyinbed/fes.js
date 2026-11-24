@@ -1,9 +1,8 @@
 import { defineComponent, onBeforeMount, ref, provide,  } from 'vue'
-import { useRouter, RouterView } from 'vue-router'
 import { getHistory } from './core/routes/routeExports';
 import { plugin } from './core/plugin';
 import { updateInitialState } from './initialState';
-import { ApplyPluginsType } from '{{{ runtimePath }}}';
+import { ApplyPluginsType, RouterView, useRouter } from '{{{ runtimePath }}}';
 
 export const DefaultContainer = defineComponent({
     name: 'DefaultContainer',

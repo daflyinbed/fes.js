@@ -15,10 +15,8 @@
 </template>
 
 <script>
-import { FScrollbar, FTooltip } from '@fesjs/fes-design';
-import { LanguageOutlined } from '@fesjs/fes-design/icon';
 import { computed, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { FScrollbar, FTooltip, LanguageOutlined, useI18n } from '../client';
 import { locale as _locale } from '../core';
 
 import langUConfigMap from '../langUConfigMap';

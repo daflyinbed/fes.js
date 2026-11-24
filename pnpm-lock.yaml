@@ -186,6 +186,9 @@ importers:
       '@fesjs/fes':
         specifier: ^4.0.1
         version: 4.0.1(vue@3.5.32(typescript@5.9.3))
+      '@babel/runtime':
+        specifier: ^7.28.3
+        version: 7.29.2
       '@fesjs/shared':
         specifier: ^4.0.1
         version: 4.0.1

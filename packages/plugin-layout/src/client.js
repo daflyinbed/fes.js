@@ -1,8 +1,11 @@
 import DOMPurify from 'dompurify';
 
-const isStr = function (str) {
+export { FAside, FButton, FDropdown, FFooter, FHeader, FLayout, FMain, FMenu, FTabPane, FTabs } from '@fesjs/fes-design';
+export * from '@fesjs/fes-design/icon';
+
+function isStr(str) {
     return typeof str === 'string';
-};
+}
 
 export function isValid(elm) {
     if (elm.nodeType === 1) {

@@ -6,7 +6,7 @@
 // 其他插件可以运行时修改配置
 // 所有插件使用一个语言和配置
 import { isRef, unref } from 'vue';
-import { createI18n, useI18n } from '{{{ VUE_I18N_PATH }}}';
+import { createI18n, useI18n } from './client';
 import locales from './locales'
 import { plugin, ApplyPluginsType } from '@@/core/coreExports';
 

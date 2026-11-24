@@ -17,7 +17,7 @@
 
 <script>
 import { useRouter } from '@fesjs/fes';
-import { FButton } from '@fesjs/fes-design';
+import { FButton } from '../../client';
 import { defineComponent } from 'vue';
 
 export default defineComponent({

@@ -8,8 +8,7 @@ import {
     onMounted,
     shallowRef,
 } from "vue";
-import { loadMicroApp } from "{{{QIANKUN}}}";
-import { mergeWith, cloneDeep, isEqual, concat } from "es-toolkit/compat";
+import { cloneDeep, concat, isEqual, loadMicroApp, mergeWith } from {{{ clientPath }}};
 // eslint-disable-next-line import/extensions
 import { getMasterOptions } from "./masterOptions";
 

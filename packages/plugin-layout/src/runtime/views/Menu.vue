@@ -13,7 +13,7 @@
 
 <script>
 import { useRoute, useRouter } from '@@/core/coreExports';
-import { FMenu } from '@fesjs/fes-design';
+import { FMenu } from '../client';
 import { computed, h, nextTick, ref, watch } from 'vue';
 import { transform as transformByAccess } from '../helpers/pluginAccess';
 import { transform as transformByLocale } from '../helpers/pluginLocale';

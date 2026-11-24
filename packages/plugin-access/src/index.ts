@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
 
 export default (api: IPluginAPI) => {
     const {
-        utils: { Mustache },
+        utils: { Mustache, winPath },
     } = api;
 
     api.describe({
@@ -39,7 +39,7 @@ export default (api: IPluginAPI) => {
             path: absoluteFilePath,
             content: Mustache.render(readFileSync(join(__dirname, 'runtime/core.tpl'), 'utf-8'), {
                 REPLACE_ROLES: JSON.stringify(roles),
-                lodashPath: 'es-toolkit/compat',
+                clientPath: JSON.stringify(winPath(join(__dirname, 'client.mjs'))),
             }),
         });
 
